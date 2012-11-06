@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML5 Upload Demo</title>
+    <link rel="stylesheet" type="text/css" href="/Content/styles/styles.css" />
+</head>
+<body>
+    <div class="body">
+        <div>
+            <h1>HTML5 Ajax Uploader Demo</h1>
+        </div>
+
+        <div id="dragndropimage" class="uploadimage-dragndrop">
+            <div class="uploadimage-text">Drag images here</div>
+            <div>Or, if you prefer...</div>
+            <div class="uploadimage-input">
+                <input type="file" multiple="multiple" name="uploadFiles" id="upload-input" />
+            </div>
+        </div>
+
+        <div id="upload-liveuploads" data-bind="template: { name: 'template-uploads' }"></div>
+
+        <div class="description">
+            <h2>RequireJS, Knockout and Uploader Harmony</h2>
+            <p>
+                Scripts are loaded using module loader <a href="http://requirejs.org/">RequireJS</a>. This demo 
+                demonstrates how to use <a href="">html5 ajax uploader</a> and <a href="http://knockoutjs.com/">knockout</a> to customize UI for uploads. 
+                
+            </p>
+        </div>
+
+        <script type="text/html" id="template-uploads">
+            <div data-bind="visible: showTotalProgress()">
+                <div>
+                    <span data-bind="text: uploadSpeedFormatted()"></span>
+                    <span data-bind="text: timeRemainingFormatted()" style="float: right;"></span>
+                </div>
+                <div class="uploadimage-totalprogress">
+                    <div class="uploadimage-totalprogressbar" style="width: 0%;" data-bind="style: { width: totalProgress() + '%' }"></div>
+                </div>
+            </div>
+            <div data-bind="foreach: uploads">
+                <div class="uploadimage-upload" data-bind="css: { 'uploadimage-uploadcompleted': uploadCompleted() }">
+                    <div class="uploadimage-fileinfo">
+                        <strong data-bind="text: fileName"></strong>
+                        <span data-bind="text: fileSizeFormated"></span>
+                        <span class="uploadimage-progresspct" data-bind="visible: uploadProgress() < 100"><span data-bind="text: uploadSpeedFormatted()"></span></span>
+                    </div>
+                    <div class="uploadimage-progress">
+                        <div class="uploadimage-progressbar" style="width: 0%;" data-bind="style: { width: uploadProgress() + '%' }"></div>
+                    </div>
+                </div>
+            </div>
+        </script>
+
+
+        <script type="text/javascript" data-main="/scripts/main" src="/Scripts/require.js"></script>
+
+    </div>
+</body>
+</html>
