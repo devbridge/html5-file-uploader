@@ -1,0 +1,26 @@
+# Build and Object Folders
+bin/
+obj/
+Obj/
+
+#User Specific Files
+*.user
+*.suo
+*.userprefs
+*.pidb
+
+
+#Resource Caches
+_ReSharper.*
+*.sln.cache
+
+#Upgrade Report Files
+_UpgradeReport_Files/
+
+#Nuget
+packages/**
+!packages/repositories.config
+/IAmMec.Web/logs/*.log
+
+# CloudService Package
+csx/
