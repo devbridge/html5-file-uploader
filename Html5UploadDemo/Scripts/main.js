@@ -20,6 +20,8 @@ require(['src/html5Upload', 'domReady', 'knockout-models'], function (html5Uploa
                 uploadUrl: '/file/upload',
                 dropContainer: document.getElementById('dragndropimage'),
                 inputField: document.getElementById('upload-input'),
+                key: 'File',
+                data: { ProjectId: 1, ProjectName: 'Demo' },
                 maxSimultaneousUploads: 2,
                 onFileAdded: function (file) {
 
@@ -30,9 +32,8 @@ require(['src/html5Upload', 'domReady', 'knockout-models'], function (html5Uploa
                         onCompleted: function (response) {
                             fileModel.uploadCompleted(true);
                         },
-                        onProgress: function (fileSize, uploadedBytes) {
-                            var progress = parseInt(uploadedBytes / fileSize * 100, 10);
-                            fileModel.uploadProgress(progress);
+                        onProgress: function (progress, fileSize, uploadedBytes) {
+                            fileModel.uploadProgress(parseInt(progress, 10));
                         }
                     });
                 }

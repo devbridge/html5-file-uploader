@@ -15,6 +15,8 @@ define(function () {
         self.inputField = options.inputField;
         self.uploadsQueue = [];
         self.activeUploads = 0;
+        self.data = options.data;
+        self.key = options.key;
         self.maxSimultaneousUploads = options.maxSimultaneousUploads || -1;
         self.onFileAdded = options.onFileAdded || noop;
         self.uploadUrl = options.uploadUrl;
@@ -37,8 +39,9 @@ define(function () {
         self.eventHandlers = {};
         self.events = {
             onProgress: function (fileSize, uploadedBytes) {
-                console.log('Event: upload onProgress, fileSize = ' + fileSize + ', uploadedBytes = ' + uploadedBytes);
-                (self.eventHandlers.onProgress || noop)(fileSize, uploadedBytes);
+                var progress = uploadedBytes / fileSize * 100;
+                console.log('Event: upload onProgress, progress = ' + progress + ', fileSize = ' + fileSize + ', uploadedBytes = ' + uploadedBytes);
+                (self.eventHandlers.onProgress || noop)(progress, fileSize, uploadedBytes);
             },
             onStart: function () {
                 console.log('Event: upload onStart');
@@ -126,7 +129,10 @@ define(function () {
                 xhr,
                 formData,
                 fileName,
-                file = upload.file;
+                file = upload.file,
+                prop,
+                data = manager.data,
+                key = manager.key || 'file';
 
             console.log('Beging upload: ' + upload.fileName);
             manager.activeUploads += 1;
@@ -174,8 +180,18 @@ define(function () {
                 console.log('Upload failed: ', upload.fileName);
             };
 
+            // Append additional data if provided:
+            if (data) {
+                for (prop in data) {
+                    if (data.hasOwnProperty(prop)) {
+                        console.log('Adding data: ' + prop + ' = ' + data[prop]);
+                        formData.append(prop, data[prop]);
+                    }
+                }
+            }
+
             // Append file data:
-            formData.append('file', file);
+            formData.append(key, file);
 
             // Initiate upload:
             xhr.send(formData);
