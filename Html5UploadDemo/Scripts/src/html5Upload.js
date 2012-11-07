@@ -66,7 +66,6 @@ define(function () {
                 dropContainer = manager.dropContainer,
                 inputField = manager.inputField,
                 cancelEvent = function (e) {
-                    console.log('Canceling event');
                     e.preventDefault();
                     e.stopPropagation();
                 };
