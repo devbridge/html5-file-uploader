@@ -9,6 +9,7 @@ define(function () {
         console = window.console || { log: noop },
         supportsFileApi;
 
+    // Upload manager constructor:
     function UploadManager(options) {
         var self = this;
         self.dropContainer = options.dropContainer;
@@ -28,6 +29,7 @@ define(function () {
         self.initialize();
     }
 
+    // FileUpload proxy class:
     function FileUpload(file) {
         var self = this;
 
@@ -197,6 +199,7 @@ define(function () {
             xhr.send(formData);
         },
 
+        // Event handlers:
         on: function (element, eventName, handler) {
             if (!element) {
                 return;
