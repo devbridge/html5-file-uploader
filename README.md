@@ -12,7 +12,7 @@ Samples on how to use module and create custom user interface for file uploads a
 
 ##Demos
 
-* [RequireJS, Knockout and Uploader working in harmony](http://devbridge-html5upload.azurewebsites.net/)
+* [RequireJS, Knockout and Uploader working in harmony](http://www.devbridge.com/projects/html5-ajax-file-upload/)
 
 ##Usage
 
