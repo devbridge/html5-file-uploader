@@ -62,3 +62,7 @@ Samples on how to use module and create custom user interface for file uploads a
 ##Support
 
 IE10+, Firefox 15+, Chrome 22+, Safari 6+, Opera 12+
+
+## Authors
+
+Tomas Kirda / [@tkirda](https://twitter.com/tkirda)
