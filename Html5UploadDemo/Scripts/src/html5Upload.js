@@ -73,13 +73,33 @@ define(function () {
                 cancelEvent = function (e) {
                     e.preventDefault();
                     e.stopPropagation();
+                },
+                dragOverOnClass = function(e){
+                    cancelEvent(e);
+                    dropContainer.classList.add('drag-over');
+                },
+                dragOverOffClass = function(e){
+                    cancelEvent(e);
+                    dropContainer.classList.remove('drag-over');
                 };
 
             if (dropContainer) {
+                /*
+                 * Original code
                 manager.on(dropContainer, 'dragover', cancelEvent);
                 manager.on(dropContainer, 'dragenter', cancelEvent);
                 manager.on(dropContainer, 'drop', function (e) {
                     cancelEvent(e);
+                    manager.processFiles(e.dataTransfer.files);
+                });
+                */
+                
+                manager.on(dropContainer, 'dragenter', dragOverOnClass);
+                manager.on(dropContainer, 'dragover', dragOverOnClass);
+                manager.on(dropContainer, 'dragleave', dragOverOffClass);
+                manager.on(dropContainer, 'drop', function (e) {
+                    cancelEvent(e);
+                    dragOverOffClass(e);
                     manager.processFiles(e.dataTransfer.files);
                 });
             }
