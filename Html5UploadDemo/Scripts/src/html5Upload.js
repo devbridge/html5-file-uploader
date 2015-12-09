@@ -164,6 +164,7 @@ define(function () {
             fileName = file.name;
 
             xhr.open('POST', manager.uploadUrl);
+            xhr.setRequestHeader('Accept', 'application/json, text/javascript', '*/*');
 
             // Triggered when upload starts:
             xhr.upload.onloadstart = function () {
