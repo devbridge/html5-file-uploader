@@ -12,7 +12,7 @@ Samples on how to use module and create custom user interface for file uploads a
 
 ##Demos
 
-* [RequireJS, Knockout and Uploader working in harmony](http://www.devbridge.com/projects/html5-ajax-file-upload/)
+* [HTML5 Drag & Drop Ajax File Uploader](https://www.devbridge.com/sourcery/components/drag-and-drop-uploader/)
 
 ##Usage
 
