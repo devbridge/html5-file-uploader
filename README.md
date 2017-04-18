@@ -1,4 +1,4 @@
-#HTML5 AJAX File Uploader Module
+# HTML5 AJAX File Uploader Module
 ================================
 
 **This module abstracts HTML5 file and drag and drop API and manages file upload process**
@@ -10,11 +10,11 @@
 
 Samples on how to use module and create custom user interface for file uploads are available.
 
-##Demos
+## Demos
 
 * [HTML5 Drag & Drop Ajax File Uploader](https://www.devbridge.com/sourcery/components/drag-and-drop-uploader/)
 
-##Usage
+## Usage
 
     html5Upload.initialize({
         // URL that handles uploaded files
@@ -59,7 +59,7 @@ Samples on how to use module and create custom user interface for file uploads a
     });
 
 
-##Support
+## Support
 
 IE10+, Firefox 15+, Chrome 22+, Safari 6+, Opera 12+
 
